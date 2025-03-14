@@ -1,0 +1,53 @@
+Step 1: Install Node.js 
+1. Download and install Node.js from https://nodejs.org/
+ Verify installation with the following in cmd:
+ node -v
+ npm -v
+
+
+
+Step 2: Set Up the Express.js Server
+1. Open PowerShell and create a project folder:
+ mkdir qr_project
+ cd qr_project
+
+
+2. Initialize a Node.js project:
+ npm init -y
+
+
+3. Install dependencies:
+ npm install express sqlite3 body-parser
+
+4 Extract the ZIP File
+
+Extract the sqlite-tools-win-x64.zip file to a folder (e.g., C:\sqlite\)
+Add SQLite to System PATH
+
+Open Start Menu and search for "Environment Variables", then open it.
+Under System Properties, click "Environment Variables"
+Find "Path" under System Variables, select it, and click Edit...
+Click New, then enter:
+
+C:\sqlite\
+
+Click OK to save and close everything.
+Verify SQLite Installation
+
+Open Command Prompt (cmd) and type:
+
+sqlite3 --version
+You should see an output like:
+3.42.0 2024-01-01
+Now SQLite is installed and ready to use!
+
+
+
+Step 4: Running the System
+1. Start the Express.js server:
+ node server.js
+2. Run the Python scanner:
+ python scan_qr.py
+3. Scan a QR code, and it will be stored in SQLite!
+4. To check stored QR codes, open a browser and visit:
+ http://localhost:5000/qrcodes
