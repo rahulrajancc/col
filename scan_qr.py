@@ -1,17 +1,16 @@
 import cv2
 import requests
 import json
-API_URL = "http://localhost:2000/reg"
-def scan_qr():
+url = "http://localhost:2000/reg"
     cap = cv2.VideoCapture(0)
-    detector = cv2.QRCodeDetector()
+    det = cv2.QRCodeDetector()
     while True:
         _, frame = cap.read()
-        data, bbox, _ = detector.detectAndDecode(frame)
+        data, bbox, _ = det.detectAndDecode(frame)
         if data:
             print(f"QR Code detected: {data}")
             payload = {"qr_data": data}
-            response = requests.post(API_URL, json=payload)
+            response = requests.post(url, json=payload)
             
             if response.status_code == 200:
                 print("registered successfully")
@@ -23,5 +22,4 @@ def scan_qr():
             break
     cap.release()
     cv2.destroyAllWindows()
-if __name__ == "__main__":
-    scan_qr()
+
